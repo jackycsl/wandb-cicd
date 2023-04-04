@@ -1,10 +1,13 @@
-name: GitHub Actions Demo
+name: Basic CI
 
-on: [push]
+on: [pull_request]
+
 jobs:
-  Explore-GitHub-Actions:
+  my-first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: hello
+      - uses: actions/checkout@v3
+      - name: run python script
         run: |
-          echo "hello world"
+          pip install -r requirements.txt
+          python ci.py
